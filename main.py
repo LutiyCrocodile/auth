@@ -17,28 +17,30 @@ class Interface(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_2.clicked.connect(self.enter_ssl)
         self.base_line_edit = [self.ui.lineEdit, self.ui.lineEdit_2]
 
+    def signal_hendler(self, value):
+        QtWidgets.QMessageBox.about(self, "Оповещение", value)
+
     def enter(self):
         login = self.ui.lineEdit.text().strip().replace(" ", "")
         pwd = self.ui.lineEdit_2.text().strip().replace(" ", "")
         data = db.auth(login, pwd)
         if data:
-            Congrats = QtWidgets.QWidget()
-            ui = Ui_Congrats()
-            ui.setupUi(Congrats)
-            Congrats.show()
-            sys.exit(app.exec())
+            print(f"Success, {data[0]}, {data[1]}, {data[2]}")
+            # QtWidgets.QMessageBox.about(self, "N", text="Nice")
         else:
-            errorr = QtWidgets.QWidget()
-            ui = Ui_Error()
-            ui.setupUi(errorr)
-            errorr.show()
-            sys.exit(app.exec())
+            print("Wrong")
+            # QtWidgets.QMessageBox.about(self, "N", text="Wrong")
 
     def enter_ssl(self):
         login = self.ui.lineEdit.text().strip().replace(" ", "")
         pwd = self.ui.lineEdit_2.text().strip().replace(" ", "")
-        data = db.auth(login, pwd, SSL_in=True)
-        return data
+        data = db.auth(login, pwd, True)
+        if data:
+            print(f"Success, {data[0]}, {data[1]}, {data[2]}. SSl")
+            # QtWidgets.QMessageBox.about(self, "N", text="Nice")
+        else:
+            print("Wrong")
+            # QtWidgets.QMessageBox.about(self, "N", text="Wrong")
 
 
 if __name__ == "__main__":

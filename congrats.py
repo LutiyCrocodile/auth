@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from des import Ui_MainWindow
 
 
 class Ui_Congrats(object):
@@ -31,6 +32,7 @@ class Ui_Congrats(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Congrats = QtWidgets.QWidget()
     ui = Ui_Congrats()

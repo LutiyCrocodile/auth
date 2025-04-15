@@ -31,6 +31,7 @@ class Ui_Error(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Error = QtWidgets.QWidget()
     ui = Ui_Error()
